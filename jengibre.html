@@ -1,0 +1,30 @@
+<!doctype HTML>
+<html>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<head>
+<!-- A-Frame itself -->
+<script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+
+<!-- Pure three.js code that the A-Frame components use for location-based AR -->
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'></script>
+
+<!-- AR.js A-Frame components -->
+<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
+</head>
+<body style="margin: 0px; overflow: hidden;">
+
+
+<a-scene embedded arjs xr-mode-ui="enabled: false;" arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"  renderer="antialias: false; alpha: true; clearColor: #000000">
+    
+    
+    <a-marker type='pattern' preset='custom'  url='./pattern-logo.patt' id="myMarker">
+        <a-entity custom-instanced-mesh get-matrix get-source-dimentions position="0 0 0"></a-entity>
+    </a-marker>
+    <a-entity camera far=200 near=0.2  id="markerCam" log-camera-params look-controls='enable: true;'></a-entity>
+    
+</a-scene> 
+
+<script src="js/main_jengibre.js"></script>
+
+</body>
+</html>
