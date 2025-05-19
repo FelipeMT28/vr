@@ -14,18 +14,10 @@
 <body style="margin: 0px; overflow: hidden;">
 
 
-<a-scene embedded arjs vr-mode-ui="enabled: false;" arjs="debugUIEnabled: true trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"  renderer="antialias: false; alpha: true; clearColor: #000000">
-   
-   <!--
-        <a-entity custom-instanced-mesh position="0 0 0" scale="3 3 3"></a-entity>
-
-    <a-marker-camera preset='kanji' far=200 near=0.2 log-camera-params id="markerCam">
-        
-    </a-marker-camera>
-    -->
+<a-scene embedded arjs xr-mode-ui="enabled: false;" arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"  renderer="antialias: false; alpha: true; clearColor: #000000">
     
     
-    <a-marker preset='kanji' >
+    <a-marker type='pattern' preset='custom'  url='./pattern-logo.patt' id="myMarker">
         <a-entity custom-instanced-mesh get-matrix get-source-dimentions position="0 0 0"></a-entity>
     </a-marker>
     <a-entity camera far=200 near=0.2  id="markerCam" log-camera-params look-controls='enable: true;'></a-entity>
@@ -36,13 +28,3 @@
 
 </body>
 </html>
-<!--
-<a-entity custom-instanced-mesh position="0 0 0" scale="0.5 0.5 0.5"></a-entity>
-<a-entity id="camera" camera camera-listener active="true"></a-entity>
-    <a-marker type="pattern" url="data/kanji.patt" >
-        <a-entity custom-instanced-mesh position="0 0 0" scale="0.5 0.5 0.5"></a-entity>
-        <a-plane id="mesh" position="0 0 0" color="red"></a-plane>
-    </a-marker>
-
-
--->
