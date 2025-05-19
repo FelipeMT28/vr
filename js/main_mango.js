@@ -396,14 +396,14 @@ const dimensions = {h:null, w: null}
 
 
 AFRAME.registerComponent('get-source-dimentions', {
-    init: function(){ this.data = undefined},
+    init: function(){ this.data = undefined, this.arSystem = undefined},
 
     tick: function(){
         if (!this.data) {
-              const arSystem = this.el.sceneEl.systems["arjs"];
+              this.arSystem = this.el.sceneEl.systems["arjs"];
               //console.log(arSystem)
-              if (arSystem) {
-                this.data = arSystem._arSession.arSource.domElement
+              if (this.arSystem) {
+                this.data = this.arSystem._arSession.arSource.domElement
                 console.log("arToolkitSource ready!");
               } else {
                 return; // still waiting
@@ -412,12 +412,14 @@ AFRAME.registerComponent('get-source-dimentions', {
 
         //console.log("Actual source dimensions:", this.data.clientWidth, this.data.clientHeight);
 
-            
+            dimensions.h = this.data.clientHeight
+            dimensions.w = this.data.clientWidth // Once
             if(!dimensions.h)
             {
-                dimensions.h = this.data.clientHeight
-                dimensions.w = this.data.clientWidth // Once
+                
             }
+            //this.arSystem._arSession.arContext.arController.orientation = getSourceOrientation();
+            //this.arSystem._arSession.arController.options.orientation = getSourceOrientation();
 
     }
 })
@@ -447,6 +449,7 @@ AFRAME.registerComponent('get-matrix', {
             updateSplatSorting(splatMesh, globCam, vertexCount, splatData);
 
         //console.log("Source Dimentions: ", this.arToolkitSource.domElement.clientWidth, this.arToolkitSource.domElement.clientHeight);
+    
     }
 
 
@@ -495,7 +498,7 @@ AFRAME.registerComponent('log-camera-params', {
     }
 
         
-        
+    //this.sceneEl.camera.updateProjectionMatrix();
 
         if(lastSizes.w != this.sceneEl.canvas.width)
         {

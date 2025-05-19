@@ -14,15 +14,19 @@
 <body style="margin: 0px; overflow: hidden;">
 
 
-<a-scene embedded arjs xr-mode-ui="enabled: false;" arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"  renderer="antialias: false; alpha: true; clearColor: #000000">
+<<a-scene embedded arjs xr-mode-ui="enabled: false;" arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"  renderer="antialias: false; alpha: true; clearColor: #000000" device-orientation-permission-ui="enabled: true">
     
     
-    <a-marker preset="kanji" id="myMarker">
+    <a-marker type='pattern' preset='custom'  url='./pattern-logo.patt' id="myMarker">
         <a-entity custom-instanced-mesh get-matrix get-source-dimentions position="0 0 0"></a-entity>
     </a-marker>
     <a-entity camera far=200 near=0.2  id="markerCam" log-camera-params look-controls='enable: true;'></a-entity>
     
 </a-scene> 
+<button onclick="window.history.back()" 
+        style="position: absolute; top: 10px; left: 10px; z-index: 9999; padding: 10px 15px; font-size: 16px;">
+  ⬅ Back
+</button>
 
 <script src="js/main_mango.js"></script>
 
